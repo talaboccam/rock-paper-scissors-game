@@ -49,12 +49,29 @@
     function game() {
       let playerScore = 0;
       let computerScore = 0;
-
+      
+      for (i = 0; i < 6; i++) {
+        let round = playRound(playSelection, computerSelection);
+        let roundwinner = round.slice(0, 7)
+        if (roundwinner === "You Win") {
+          playerScore++;
+        } else {
+          computerScore++;
+        }
+      }
+      if (playerScore === computerScore) {
+        return "The match is a draw!"
+      }
+      if (playerScore > computerScore) {
+        return "You Win!"
+      }
+      if (playerScore < computerScore) {
+        return "You Lose!"
+      }
     }
 
     const playerSelection = "rock";
     const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection));
     
   </script>
 </body>
