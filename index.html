@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    function computerPlay() {
+      const play = ["rock", "paper", "scissors"];
+      let randomselection = Math.floor(Math.random() * 2);
+      const computerpick = play[randomselection];
+      return computerpick;    
+    }
+    
+    function playRound (playerSelection, computerSelection) {
+      const playerChoice = playerSelection.toUpperCase();
+      const computerChoice = computerSelection.toUpperCase();
+
+      if (playerChoice === computerChoice) {
+        return "draw"
+      }
+      if (playerChoice === "ROCK") {
+        if (computerChoice === "SCISSORS") {
+          return "You Win! Rock beats Scissors";
+        }
+        if (computerChoice === "PAPER") {
+          return "You Lose! Paper beats Rock";
+        }
+      }
+      if (playerChoice === "SCISSORS") {
+        if (computerChoice === "ROCK") {
+          return "You Lose! Rock beats Scissors";
+        }
+        if (computerChoice === "PAPER") {
+          return "You Win! Scissors beats Paper"
+        }
+      }
+      if (playerChoice === "PAPER") {
+        if (computerChoice === "SCISSORS") {
+          return "You Lose! Scissors beats Paper";
+        }
+        if (computerChoice === "ROCK") {
+          return "You Win! Paper beats Rock";
+        }
+      }
+    }
+
+    function game() {
+      let playerScore = 0;
+      let computerScore = 0;    
+      for (i = 0; i < 5; i++) {
+        const computerSelection = computerPlay();
+        let playerSelection = window.prompt("Type Rock, Paper or Scissors", "Rock");
+        let round = playRound(playerSelection, computerSelection);
+        let roundwinner = round.slice(0, 7);
+        if (roundwinner === "You Win") {
+          playerScore++;
+          console.log(round);
+        } else {
+          computerScore++;
+          console.log(round);
+        }
+      }
+      if (playerScore === computerScore) {
+        return "The match is a draw!"
+      }
+      if (playerScore > computerScore) {
+        return "You Win!"
+      }
+      if (playerScore < computerScore) {
+        return "You Lose!"
+      }
+    }
+    
+    console.log(game());
+    
+  </script>
+</body>
+</html>
