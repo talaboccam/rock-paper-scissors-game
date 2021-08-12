@@ -12,8 +12,42 @@
       const computerpick = play[randomselection];
       return computerpick;    
     }
-    const computerselection = computerPlay();
-    console.log(computerselection);
+    
+    function playRound (playerSelection, computerSelection) {
+      const playerChoice = playerSelection.toUpperCase();
+      const computerChoice = computerSelection.toUpperCase();
+
+      if (playerChoice === computerChoice) {
+        return "draw"
+      }
+      if (playerChoice === ROCK) {
+        if (computerChoice === SCISSORS) {
+          return "You Win! Rock beats Scissors";
+        }
+        if (computerChoice === PAPER) {
+          return "You Lose! Paper beats Rock";
+        }
+      }
+      if (playerChoice === SCISSORS) {
+        if (computerChoice === ROCK) {
+          return "You Lose! Rock beats Scissors";
+        }
+        if (computerChoice === PAPER) {
+          return "You Win! Scissors beats Paper"
+        }
+      }
+      if (playerChoice === PAPER) {
+        if (computerChoice === SCISSORS) {
+          return "You Lose! Scissors beats Paper";
+        }
+        if (computerChoice === ROCK) {
+          return "You Win! Paper beats Rock";
+        }
+      }
+    }
+
+    const computerSelection = computerPlay();
+    
   </script>
 </body>
 </html>
